@@ -5,5 +5,41 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6>
+                <ion-card (click)="goToPustList()">
+                    <ion-card-content>
+                        <img src="../../assets/imgs/putList.png" />
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
 
+            <ion-col col-6>
+                <ion-card>
+                    <ion-card-content>
+                        <img src="../../assets/imgs/pickList.png" />
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+
+            <ion-col col-6>
+                <ion-card>
+                    <ion-card-content>
+                        <img src="../../assets/imgs/log.png" />
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-6>
+                <ion-card (click)="logOut()">
+                    <ion-card-content>
+                        <img src="../../assets/imgs/logout.png" />
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
 </ion-content>

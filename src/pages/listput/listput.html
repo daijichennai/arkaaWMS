@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>List Put</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let p of putJson">
+        <ion-card-content>
+            {{p.putID}} - {{p.putNo}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>
