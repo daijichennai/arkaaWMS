@@ -36,7 +36,19 @@ export class HomePage {
     }).then((db: SQLiteObject) => {
       db.executeSql('DELETE FROM putMaster', [])
         .then(res => {
-          alert(JSON.stringify(res));
+          //alert(JSON.stringify(res));
+          console.log(res);
+        })
+        .catch(e => console.log(e));
+    }).catch(e => console.log(e));
+
+    this.sqlite.create({
+      name: 'ionicdb.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('DELETE FROM putDetails', [])
+        .then(res => {
+          //alert(JSON.stringify(res));
           console.log(res);
         })
         .catch(e => console.log(e));
