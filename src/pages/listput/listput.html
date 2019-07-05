@@ -4,10 +4,19 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-card *ngFor="let p of putJson">
+<ion-content>
+    <!-- <ion-card *ngFor="let p of putJson">
         <ion-card-content>
-            {{p.putID}} - {{p.putNo}}
+            {{p.putID}} - {{p.putNo}} - {{p.itemCode}} - {{p.itemName}} - {{p.suggestedLocation}} - {{p.itemQty}}
         </ion-card-content>
+    </ion-card> -->
+
+    <ion-card *ngFor="let p of putJson">
+        <ion-item>
+            <h2><span><b>PutNo : </b></span> {{p.putNo}}</h2>
+            <h2><span><b>Item Code : </b></span>{{p.itemCode}} </h2>
+            <h2><span><b>Suggested Location : </b></span>{{p.suggestedLocation}} </h2>
+        </ion-item>
     </ion-card>
+
 </ion-content>

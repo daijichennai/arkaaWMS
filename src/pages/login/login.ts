@@ -68,7 +68,7 @@ export class LoginPage {
         // alert(JSON.stringify(res));
         // alert('PutMaster Executed SQL');
       }).catch(e => {
-        alert('Error in line 35 = ' + JSON.stringify(e));
+        alert('Error in line 71 = ' + JSON.stringify(e));
         console.log(e);
       });
     }).catch(e => console.log(e));
@@ -81,7 +81,7 @@ export class LoginPage {
         // alert(JSON.stringify(res));
         // alert('PutMaster Executed SQL');
       }).catch(e => {
-        alert('Error in line 50 = ' + JSON.stringify(e));
+        alert('Error in line 84 = ' + JSON.stringify(e));
         console.log(e);
       });
     }).catch(e => console.log(e));
@@ -96,11 +96,11 @@ export class LoginPage {
     }).then((db: SQLiteObject) => {
       db.executeSql('INSERT INTO putMaster VALUES(?,?)', [i, "putNo00" + i])
         .then(res => {
-          alert('Sucess Insert = ' + JSON.stringify(res));
+          //alert('Sucess Insert = ' + JSON.stringify(res));
           console.log(res);
 
         }).catch(e => {
-          alert('Error in line 51 = ' + JSON.stringify(e));
+          alert('Error in line 103 = ' + JSON.stringify(e));
           //console.log(e);
         });
     }).
@@ -109,7 +109,31 @@ export class LoginPage {
         //alert(JSON.stringify(error));
         console.log(error);
       });
+      this.insertPutDetails(i,"00"+i,"itemName"+i,"BC1R"+i ,i);
     }
+  }
+
+
+  insertPutDetails(putID, itemCode, itemName, suggestedLocation, itemQty){
+    this.sqlite.create({
+      name: 'ionicdb.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('INSERT INTO putDetails VALUES(?,?,?,?,?)', [putID, itemCode, itemName, suggestedLocation, itemQty])
+        .then(res => {
+          //alert('Sucess Insert = ' + JSON.stringify(res));
+          console.log(res);
+
+        }).catch(e => {
+          alert('Error in line 51 = ' + JSON.stringify(e));
+          //console.log(e);
+        });
+    }).
+      catch(error => {
+        alert('Error in line 133 = ' + JSON.stringify(error));
+        //alert(JSON.stringify(error));
+        console.log(error);
+      });
   }
 
   toastMsgFn(msg: string) {

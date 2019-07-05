@@ -25,10 +25,17 @@ export class ListputPage {
       name: 'ionicdb.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('SELECT * FROM putMaster', []).then(res => {
+      db.executeSql('SELECT * FROM putMaster INNER JOIN putDetails ON putMaster.putID = putDetails.putID', []).then(res => {
         this.putJson = [];
         for (var i = 0; i < res.rows.length; i++) {
-          this.putJson.push({ putID: res.rows.item(i).putID, putNo: res.rows.item(i).putNo })
+          this.putJson.push({ 
+            putID: res.rows.item(i).putID,
+            putNo: res.rows.item(i).putNo,
+            itemCode: res.rows.item(i).itemCode,
+            itemName: res.rows.item(i).itemName,
+            suggestedLocation: res.rows.item(i).suggestedLocation,
+            itemQty: res.rows.item(i).itemQty,
+           })
         }
         //alert("Select = " + JSON.stringify(res));
         //alert(res.rows.item(0).putNo);
