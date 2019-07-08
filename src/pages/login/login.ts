@@ -47,10 +47,10 @@ export class LoginPage {
       content: 'Verifying User.....'
     });
     if ((this.userName === "user1" || this.userName === "user2") && (this.userPassword === "123456789")) {
-      this.storage.set('lsUserPwd', this.userName);
-      this.storage.set('lsUserName', this.userPassword);
+      this.storage.set('lsUserName', this.userName);
+      this.storage.set('lsUserPwd', this.userPassword);
       
-      this.insertRecords();
+      //this.insertRecords();
       this.navCtrl.setRoot('HomePage');
     }else{
       this.toastMsgFn('User Name or Password is Invalid');

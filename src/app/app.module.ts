@@ -6,12 +6,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
-
+import { CommfuncProvider } from '../providers/commfunc/commfunc';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     MyApp,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
@@ -25,7 +27,8 @@ import { MyApp } from './app.component';
     SplashScreen,
     MyApp,
     SQLite,
-   {provide: ErrorHandler, useClass: IonicErrorHandler}
+   {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CommfuncProvider
   ]
 })
 export class AppModule {}

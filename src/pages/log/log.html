@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Log</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="isAvailable" text-center padding-top>
+        <b class="error-box" style="font-size: 24px;">No Log Found</b>
+    </div>
+    <ion-card *ngFor="let l of logJson">
+        <ion-item>
+            <h2><span><b>Put No  : </b></span>{{l.putNo}} </h2>
+            <h2><span><b>Date : </b></span>{{l.logDate}} </h2>
+        </ion-item>
+    </ion-card>
+</ion-content>

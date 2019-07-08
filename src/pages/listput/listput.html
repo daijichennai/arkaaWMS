@@ -1,22 +1,21 @@
 <ion-header>
     <ion-navbar color="primary">
         <ion-title>List Put</ion-title>
+        <ion-buttons end>
+            <button text-right ion-button icon-only (click)="goToHome()">
+            <ion-icon ios="ios-home" md="md-home"></ion-icon>
+          </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <!-- <ion-card *ngFor="let p of putJson">
-        <ion-card-content>
-            {{p.putID}} - {{p.putNo}} - {{p.itemCode}} - {{p.itemName}} - {{p.suggestedLocation}} - {{p.itemQty}}
-        </ion-card-content>
-    </ion-card> -->
-
     <ion-card *ngFor="let p of putJson">
-        <ion-item>
-            <h2><span><b>PutNo : </b></span> {{p.putNo}}</h2>
-            <h2><span><b>Item Code : </b></span>{{p.itemCode}} </h2>
-            <h2><span><b>Suggested Location : </b></span>{{p.suggestedLocation}} </h2>
+        <ion-item (click)="goToPutDetails(p.putID,p.putNo)">
+            <h2><span><b>Put No : </b></span> {{p.putNo}}</h2>
+            <h2><span><b>Item Code : </b></span>
+                <div *ngFor="let item of p.items">{{item.itemName}}</div>
+            </h2>
         </ion-item>
     </ion-card>
-
 </ion-content>

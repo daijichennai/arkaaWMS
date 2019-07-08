@@ -1,0 +1,217 @@
+USE [Sample]
+GO
+/****** Object:  Table [dbo].[logMaster]    Script Date: 08/07/2019 16:06:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[logMaster](
+	[logID] [int] IDENTITY(1,1) NOT NULL,
+	[putNo] [varchar](20) NULL,
+	[userName] [varchar](50) NULL,
+	[logDate] [datetime] NULL,
+ CONSTRAINT [PK_logMaster] PRIMARY KEY CLUSTERED 
+(
+	[logID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[putDetails]    Script Date: 08/07/2019 16:06:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[putDetails](
+	[putDetailsID] [int] IDENTITY(1,1) NOT NULL,
+	[putID] [int] NULL,
+	[itemCode] [varchar](20) NULL,
+	[itemName] [varchar](20) NULL,
+	[suggestedLocation] [varchar](20) NULL,
+	[itemQty] [varchar](20) NULL,
+ CONSTRAINT [PK_putDetails] PRIMARY KEY CLUSTERED 
+(
+	[putDetailsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[putMaster]    Script Date: 08/07/2019 16:06:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[putMaster](
+	[putID] [int] IDENTITY(1,1) NOT NULL,
+	[putNo] [varchar](20) NULL,
+ CONSTRAINT [PK_putMaster] PRIMARY KEY CLUSTERED 
+(
+	[putID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[stockMaster]    Script Date: 08/07/2019 16:06:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[stockMaster](
+	[stockID] [int] IDENTITY(1,1) NOT NULL,
+	[putID] [int] NULL,
+	[rackQR] [varchar](50) NULL,
+	[itemCode] [varchar](50) NULL,
+	[itemName] [varchar](50) NULL,
+	[itemQty] [varchar](50) NULL,
+	[userName] [varchar](50) NULL,
+ CONSTRAINT [PK_stockMaster] PRIMARY KEY CLUSTERED 
+(
+	[stockID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[putDetails] ON 
+
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (1, 1, N'item001', N'itemName001', N'BC1R1', N'3')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (2, 1, N'item002', N'itemName002', N'BC1R2', N'1')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (3, 1, N'item003', N'itemName003', N'BC2R3', N'2')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (4, 2, N'item004', N'itemName004', N'BC2R4', N'3')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (5, 2, N'item005', N'itemName005', N'BC2R5', N'1')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (6, 3, N'item006', N'itemName006', N'BC2R6', N'2')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (7, 4, N'item007', N'itemName007', N'BC2R7', N'2')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (8, 5, N'item008', N'itemName008', N'BC2R8', N'2')
+GO
+SET IDENTITY_INSERT [dbo].[putDetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[putMaster] ON 
+
+GO
+INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (1, N'put001')
+GO
+INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (2, N'put002')
+GO
+INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (3, N'put003')
+GO
+INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (4, N'put004')
+GO
+INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (5, N'put005')
+GO
+SET IDENTITY_INSERT [dbo].[putMaster] OFF
+GO
+/****** Object:  StoredProcedure [dbo].[sp_b_putMaster]    Script Date: 08/07/2019 16:06:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROCEDURE [dbo].[sp_b_putMaster]
+	
+	(
+	
+	@putID int = 0,
+	@putDetailsID int = null,
+	@putNo varchar(20) = null,
+	
+	@rackQR varchar(50) = null,
+	@itemCode varchar(50) = null,
+	@itemName varchar(20) = null,
+	@itemQty varchar(20) = null,
+	@userName varchar(20) = null,
+	@currentDate datetime = null,
+	@qtype varchar(20),
+	@MSG varchar(100) = null OUTPUT,
+	@PageIndex int = null,
+	@PageSize int = null,
+	@RecordCount int = null output
+	)
+	
+AS
+	/* SET NOCOUNT ON */
+	begin
+		if @qtype = 'selPutList'   
+		begin
+			select * from putMaster
+			set @MSG = 'Select Success'
+		end
+		
+		else if @qtype = 'selectList'
+		begin
+			SELECT   putMaster.putID,
+					 putMaster.putNo,
+					 putDetails.itemName,
+					 putDetails.itemCode,
+					 putDetails.suggestedLocation,
+					 putDetails.itemQty,
+					 putDetails.putDetailsID					 
+			FROM     putDetails INNER JOIN  putMaster ON putDetails.putID = putMaster.putID 
+			where putMaster.putID =@putID
+		end
+
+		else if @qtype = 'selPutDetByID'
+		begin
+			select * from putDetails where putDetailsID = @putDetailsID
+		end
+		
+		else if @qtype = 'insPut'
+		begin
+			begin tran
+				insert into stockMaster (putID, rackQR, itemCode, itemName, itemQty, userName)
+				values  (@putID, @rackQR, @itemCode, @itemName, @itemQty, @userName)
+				
+				delete  from putDetails where putDetailsID = @putDetailsID
+				
+				insert logMaster (putNo, userName, logDate) values
+								 (@putNo, @userName, @currentDate)
+				
+				set @MSG = 'Inserted'
+			commit tran
+		end	 
+		
+		else if @qtype = 'selLog'
+		begin
+			select * from logMaster where userName = @userName
+		end
+		
+		else if @qtype  = 'resetPut'
+		begin 
+			begin tran
+				delete from putMaster
+				insert into putMaster (putNo) values  ('put001')
+				insert into putMaster (putNo) values  ('put002')
+				insert into putMaster (putNo) values  ('put003')
+				insert into putMaster (putNo) values  ('put004')
+				insert into putMaster (putNo) values  ('put005')
+				
+				delete from putDetails
+				
+			commit tran
+		end
+ 
+			 
+
+	end
+GO

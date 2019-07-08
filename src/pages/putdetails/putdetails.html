@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>Put No : {{strPutNo}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let p of putDetailsJson">
+    <ion-item (click)="goToAddPutDetails(p.putDetailsID,p.putNo)" >
+        <h2><span><b>Item Code : </b></span>{{p.itemCode}} </h2>
+        <h2><span><b>Item Name : </b></span>{{p.itemName}} </h2>
+        <h2><span><b>Item Quantity  : </b></span>{{p.itemQty}} </h2>
+        <h2><span><b>Suggested Location : </b></span>{{p.suggestedLocation}} </h2>
+        <br>
+        <button ion-button full  >Put</button>
+    </ion-item>
+</ion-card>
+</ion-content>
