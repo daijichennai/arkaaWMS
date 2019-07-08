@@ -13,7 +13,45 @@ CREATE TABLE [dbo].[logMaster](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[putDetails]    Script Date: 08/07/2019 16:46:14 ******/
+/****** Object:  Table [dbo].[pickDetails]    Script Date: 08/07/2019 17:19:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[pickDetails](
+	[pickDetailsID] [int] IDENTITY(1,1) NOT NULL,
+	[pickID] [int] NULL,
+	[itemCode] [varchar](20) NULL,
+	[itemName] [varchar](20) NULL,
+	[suggestedLocation] [varchar](20) NULL,
+	[itemQty] [varchar](20) NULL,
+ CONSTRAINT [PK_pickDetails] PRIMARY KEY CLUSTERED 
+(
+	[pickDetailsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[pickMaster]    Script Date: 08/07/2019 17:19:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[pickMaster](
+	[pickID] [int] NOT NULL,
+	[pickNo] [varchar](20) NULL
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[putDetails]    Script Date: 08/07/2019 17:19:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -36,7 +74,7 @@ CREATE TABLE [dbo].[putDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[putMaster]    Script Date: 08/07/2019 16:46:14 ******/
+/****** Object:  Table [dbo].[putMaster]    Script Date: 08/07/2019 17:19:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -51,7 +89,7 @@ CREATE TABLE [dbo].[putMaster](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[stockMaster]    Script Date: 08/07/2019 16:46:14 ******/
+/****** Object:  Table [dbo].[stockMaster]    Script Date: 08/07/2019 17:19:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,6 +112,58 @@ CREATE TABLE [dbo].[stockMaster](
 
 GO
 SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[logMaster] ON 
+
+GO
+INSERT [dbo].[logMaster] ([logID], [putNo], [userName], [logDate], [logMode]) VALUES (3, N'put005', N'user1', CAST(N'2019-07-08 16:51:32.643' AS DateTime), N'put')
+GO
+SET IDENTITY_INSERT [dbo].[logMaster] OFF
+GO
+SET IDENTITY_INSERT [dbo].[pickDetails] ON 
+
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (1, 1, N'item001', N'itemName001', N'BC1R1', N'3')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (2, 1, N'item002', N'itemName002', N'BC1R2', N'1')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (3, 1, N'item003', N'itemName003', N'BC2R3', N'2')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (4, 2, N'item004', N'itemName004', N'BC2R4', N'3')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (5, 2, N'item005', N'itemName005', N'BC2R5', N'1')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (6, 2, N'item006', N'itemName006', N'BC2R6', N'2')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (7, 3, N'item007', N'itemName007', N'BC2R7', N'3')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (8, 3, N'item008', N'itemName008', N'BC2R8', N'2')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (9, 3, N'item009', N'itemName009', N'BC2R9', N'1')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (10, 4, N'item010', N'itemName010', N'BC2R10', N'3')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (11, 4, N'item011', N'itemName011', N'BC2R11', N'2')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (12, 4, N'item012', N'itemName012', N'BC2R12', N'1')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (13, 5, N'item013', N'itemName013', N'BC2R13', N'3')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (14, 5, N'item014', N'itemName014', N'BC2R14', N'2')
+GO
+INSERT [dbo].[pickDetails] ([pickDetailsID], [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (15, 5, N'item015', N'itemName015', N'BC2R15', N'1')
+GO
+SET IDENTITY_INSERT [dbo].[pickDetails] OFF
+GO
+INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (1, N'pick001')
+GO
+INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (2, N'pick002')
+GO
+INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (3, N'pick003')
+GO
+INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (4, N'pick004')
+GO
+INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (5, N'pick005')
 GO
 SET IDENTITY_INSERT [dbo].[putDetails] ON 
 
@@ -106,8 +196,6 @@ INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [sug
 GO
 INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (60, 5, N'item014', N'itemName014', N'BC2R14', N'2')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (61, 5, N'item015', N'itemName015', N'BC2R15', N'1')
-GO
 SET IDENTITY_INSERT [dbo].[putDetails] OFF
 GO
 INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (1, N'put001')
@@ -127,19 +215,23 @@ INSERT [dbo].[stockMaster] ([stockID], [putID], [rackQR], [itemCode], [itemName]
 GO
 INSERT [dbo].[stockMaster] ([stockID], [putID], [rackQR], [itemCode], [itemName], [itemQty], [userName]) VALUES (2, 5, N'BC2R13', N'item013_itemName013_3', N'itemName013', N'3', N'user1')
 GO
+INSERT [dbo].[stockMaster] ([stockID], [putID], [rackQR], [itemCode], [itemName], [itemQty], [userName]) VALUES (3, 5, N'BC2R15', N'item015_itemName015_1', N'itemName015', N'1', N'user1')
+GO
 SET IDENTITY_INSERT [dbo].[stockMaster] OFF
 GO
-/****** Object:  StoredProcedure [dbo].[sp_b_putMaster]    Script Date: 08/07/2019 16:46:14 ******/
+/****** Object:  StoredProcedure [dbo].[sp_b_putMaster]    Script Date: 08/07/2019 17:19:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[sp_b_putMaster]
+ALTER PROCEDURE [dbo].[sp_b_putMaster]
 	
 	(
 	
 	@putID int = 0,
 	@putDetailsID int = null,
+	@pickID int = null,
+	@pickDetailsID int = null,
 	@putNo varchar(20) = null,
 	
 	@rackQR varchar(50) = null,
@@ -165,6 +257,12 @@ AS
 			select * from putMaster
 			set @MSG = 'Select Success'
 		end
+
+		else if @qtype = 'selPickList'   
+		begin
+			select * from pickMaster
+			set @MSG = 'Select Success'
+		end
 		
 		else if @qtype = 'selectList'
 		begin
@@ -179,9 +277,28 @@ AS
 			where putMaster.putID =@putID
 		end
 
+
+		else if @qtype = 'selectPickList'
+		begin
+			SELECT  pickMaster.pickNo,
+					pickDetails.pickID,
+					pickDetails.itemCode,
+					pickDetails.itemName,
+					pickDetails.suggestedLocation,
+					pickDetails.itemQty,
+					pickDetails.pickDetailsID	
+		FROM        pickDetails INNER JOIN pickMaster ON pickDetails.pickID = pickMaster.pickID
+			where   pickMaster.pickID =@pickID
+		end
+
 		else if @qtype = 'selPutDetByID'
 		begin
 			select * from putDetails where putDetailsID = @putDetailsID
+		end
+
+		else if @qtype = 'selPickDetByID'
+		begin
+			select * from pickDetails where pickDetailsID = @pickDetailsID
 		end
 		
 		else if @qtype = 'insPut'
@@ -191,6 +308,7 @@ AS
 				values  (@putID, @rackQR, @itemCode, @itemName, @itemQty, @userName)
 				
 				delete  from putDetails where putDetailsID = @putDetailsID
+
 				
 				insert logMaster (putNo, userName, logDate,logMode) values
 								 (@putNo, @userName, @currentDate,@logMode)
@@ -198,6 +316,21 @@ AS
 				set @MSG = 'Inserted'
 			commit tran
 		end	 
+
+		else if @qtype = 'insPick'
+		begin
+			begin tran
+				insert into stockMaster (pickID, rackQR, itemCode, itemName, itemQty, userName)
+								values  (@pickID, @rackQR, @itemCode, @itemName, @itemQty, @userName)
+
+				delete  from pickDetails where pickDetailsID = @pickDetailsID
+				
+				insert logMaster (putNo, userName, logDate,logMode) values
+								 (@putNo, @userName, @currentDate,@logMode)
+				
+				set @MSG = 'Inserted'
+			commit tran
+		end	
 		
 		else if @qtype = 'selectLog'
 		begin
@@ -232,7 +365,36 @@ AS
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item014', N'itemName014', N'BC2R14', N'2')
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item015', N'itemName015', N'BC2R15', N'1')
 
+				delete from pickMaster
+
+				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (1, N'pick001')
+				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (2, N'pick002')
+				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (3, N'pick003')
+				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (4, N'pick004')
+				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (5, N'pick005')
+
+				delete from putDetails
+
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'3')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'1')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item003', N'itemName003', N'BC2R3', N'2')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item004', N'itemName004', N'BC2R4', N'3')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item005', N'itemName005', N'BC2R5', N'1')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item006', N'itemName006', N'BC2R6', N'2')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item007', N'itemName007', N'BC2R7', N'3')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item008', N'itemName008', N'BC2R8', N'2')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item009', N'itemName009', N'BC2R9', N'1')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 4, N'item010', N'itemName010', N'BC2R10', N'3')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 4, N'item011', N'itemName011', N'BC2R11', N'2')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 4, N'item012', N'itemName012', N'BC2R12', N'1')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item013', N'itemName013', N'BC2R13', N'3')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item014', N'itemName014', N'BC2R14', N'2')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item015', N'itemName015', N'BC2R15', N'1')
+
+				delete from stockMaster
+				
 				delete from logMaster
+
 				
 			commit tran
 		end

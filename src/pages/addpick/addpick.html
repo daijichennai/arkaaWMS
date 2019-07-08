@@ -1,17 +1,16 @@
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title>Add Put Details</ion-title>
+        <ion-title>Add Pick Details</ion-title>
         <ion-buttons end>
             <button text-right ion-button icon-only (click)="goToHome()">
-         <ion-icon ios="ios-home" md="md-home"></ion-icon>
-       </button>
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+      </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-
-    <ion-card *ngFor="let p of putDetailsJson">
+<ion-content padding>
+    <ion-card *ngFor="let p of pickDetailsJson">
         <ion-item>
             <h2><span><b>Item Code : </b></span>{{p.itemCode}} </h2>
         </ion-item>
@@ -19,7 +18,7 @@
             <h2><span><b>Item Name : </b></span>{{p.itemName}} </h2>
         </ion-item>
         <ion-item>
-            <h2><span><b>Item Quantity  : </b></span>{{p.itemQty}} </h2>
+            <h2><span><b>Item Quantity : </b></span>{{p.itemQty}} </h2>
         </ion-item>
 
         <ion-item>

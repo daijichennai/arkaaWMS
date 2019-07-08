@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
-import { CommfuncProvider } from '../../providers/commfunc/commfunc';
 import { HttpClient } from '@angular/common/http';
+import { CommfuncProvider } from '../../providers/commfunc/commfunc';
 import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
-  selector: 'page-addput',
-  templateUrl: 'addput.html',
+  selector: 'page-addpick',
+  templateUrl: 'addpick.html',
 })
-export class AddputPage {
-  public intPutDetailsID;
-  public putDetailsJson:any =[];
-  public hfScanBoxQR:string;
-  public hfScanRackQR:string;
-  scanBoxQR:string;
-  scanRackQR:string;
-  itemName:string;
-  itemCode:string;
-  itemQty:string;
-  putID:string;
-  strPutNo :string;
+export class AddpickPage {
+  public intPickDetailsID;
+  public pickDetailsJson: any = [];
+  public hfScanBoxQR: string;
+  public hfScanRackQR: string;
+  scanBoxQR: string;
+  scanRackQR: string;
+  itemName: string;
+  itemCode: string;
+  itemQty: string;
+  pickID: string;
+  strPickNo: string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,44 +29,44 @@ export class AddputPage {
     private myFunc: CommfuncProvider,
     public alertCtrl: AlertController,
     private storage: Storage,
-)
- {
-    this.intPutDetailsID = this.navParams.get("putDetailsID");
-    this.strPutNo = this.navParams.get("putNo");
-    console.log(this.intPutDetailsID);
-}
+  ) {
+    this.intPickDetailsID = this.navParams.get("pickDetailsID");
+    this.strPickNo = this.navParams.get("pickNo");
+    console.log(this.intPickDetailsID);
+  }
+
   goToHome() {
     this.navCtrl.setRoot('HomePage');
   }
   ionViewDidLoad() {
-    this.getPutDetailsyID(this.intPutDetailsID);
+    this.getPutDetailsyID(this.intPickDetailsID);
   }
 
-  getPutDetailsyID(putDetailsID) {
+  getPutDetailsyID(pickDetailsID) {
     let data: Observable<any>;
-    let url = this.myFunc.domainURL + "handlers/putMaster.ashx?mode=selPutDetByID&putDetailsID=" + putDetailsID;
+    let url = this.myFunc.domainURL + "handlers/putMaster.ashx?mode=selPickDetByID&pickDetailsID=" + pickDetailsID;
     let loader = this.loadingCtrl.create({
       content: 'Fetching Data From Server...'
     });
     data = this.http.get(url);
     loader.present().then(() => {
       data.subscribe(result => {
-       // console.log(result);
-        this.putDetailsJson = result;
-        this.hfScanBoxQR = result[0].itemCode +"_" + result[0].itemName + "_" + result[0].itemQty;
+        // console.log(result);
+        this.pickDetailsJson = result;
+        this.hfScanBoxQR = result[0].itemCode + "_" + result[0].itemName + "_" + result[0].itemQty;
         this.hfScanRackQR = result[0].suggestedLocation;
 
         this.itemName = result[0].itemName;
         this.itemCode = result[0].itemCode;
         this.itemQty = result[0].itemQty;
-        this.putID= result[0].putID;
+        this.pickID = result[0].pickID;
 
-        console.log(this.putDetailsJson);
+        console.log(this.pickDetailsJson);
 
         console.log("itemName = " + this.itemName);
         console.log("itemCode = " + this.itemCode);
         console.log("itemQty  = " + this.itemQty);
-        console.log("putID    = " + this.putID);
+        console.log("putID    = " + this.pickID);
 
         // alert(this.hfScanBoxQR);
         // alert(this.hfScanRackQR);
@@ -80,28 +80,25 @@ export class AddputPage {
     });
   }
 
-
-  submitFn(){
-    if(this.hfScanBoxQR === this.scanBoxQR && this.hfScanRackQR === this.scanRackQR){
+  submitFn() {
+    if (this.hfScanBoxQR === this.scanBoxQR && this.hfScanRackQR === this.scanRackQR) {
       alert("submit");
       let data: Observable<any>;
       let url = '';
       this.storage.get('lsUserName').then((lsUserName) => {
-         url = this.myFunc.domainURL + 'handlers/putMaster.ashx?mode=insPut&putID='+ this.putID + "&rackQR=" + this.scanRackQR + "&itemCode=" + this.scanBoxQR + "&itemName=" + this.itemName + "&itemQty=" + this.itemQty + "&userName=" + lsUserName + "&putDetailsID=" + this.intPutDetailsID + "&putNo=" + this.strPutNo + "&logMode=put";
-         let loader = this.loadingCtrl.create({
+        url = this.myFunc.domainURL + 'handlers/putMaster.ashx?mode=insPick&pickID=' + this.pickID + "&rackQR=" + this.scanRackQR + "&itemCode=" + this.scanBoxQR + "&itemName=" + this.itemName + "&itemQty=" + this.itemQty + "&userName=" + lsUserName + "&pickDetailsID=" + this.intPickDetailsID + "&putNo=" + this.strPickNo + "&logMode=pick";
+        let loader = this.loadingCtrl.create({
           content: 'Inserting Data'
         });
         data = this.http.post(url, "");
         loader.present().then(() => {
           data.subscribe(result => {
             //alert("success");
-            if(result===null){
+            if (result === null) {
               //this.navCtrl.pop();
               this.navCtrl.setRoot("HomePage");
             }
-
-            console.log(result);         
-            
+            console.log(result);
             loader.dismiss();
           }, error => {
             alert("failure");
@@ -110,14 +107,14 @@ export class AddputPage {
           });
         });
       });
-      
-    }else{
+
+    } else {
       this.alertMsgFn('Invalid Bar Code !...........');
     }
 
   }
 
-  alertMsgFn(msg){
+  alertMsgFn(msg) {
     let altsuccess = this.alertCtrl.create({
       title: 'Success',
       message: msg,
@@ -132,6 +129,5 @@ export class AddputPage {
     });
     altsuccess.present();
   }
-
 
 }

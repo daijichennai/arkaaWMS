@@ -32,6 +32,9 @@ export class HomePage {
     this.navCtrl.push('LogPage');
   }
   
+  goToPick(){
+    this.navCtrl.push('ListpickPage');
+  }
  
 
   goToPustList(){
