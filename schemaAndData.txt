@@ -1,17 +1,9 @@
-USE [Sample]
-GO
-/****** Object:  Table [dbo].[logMaster]    Script Date: 08/07/2019 16:06:36 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
 CREATE TABLE [dbo].[logMaster](
 	[logID] [int] IDENTITY(1,1) NOT NULL,
 	[putNo] [varchar](20) NULL,
 	[userName] [varchar](50) NULL,
 	[logDate] [datetime] NULL,
+	[logMode] [varchar](20) NULL,
  CONSTRAINT [PK_logMaster] PRIMARY KEY CLUSTERED 
 (
 	[logID] ASC
@@ -21,7 +13,7 @@ CREATE TABLE [dbo].[logMaster](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[putDetails]    Script Date: 08/07/2019 16:06:36 ******/
+/****** Object:  Table [dbo].[putDetails]    Script Date: 08/07/2019 16:46:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -44,7 +36,7 @@ CREATE TABLE [dbo].[putDetails](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[putMaster]    Script Date: 08/07/2019 16:06:36 ******/
+/****** Object:  Table [dbo].[putMaster]    Script Date: 08/07/2019 16:46:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,18 +44,14 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[putMaster](
-	[putID] [int] IDENTITY(1,1) NOT NULL,
-	[putNo] [varchar](20) NULL,
- CONSTRAINT [PK_putMaster] PRIMARY KEY CLUSTERED 
-(
-	[putID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[putID] [int] NOT NULL,
+	[putNo] [varchar](20) NULL
 ) ON [PRIMARY]
 
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[stockMaster]    Script Date: 08/07/2019 16:06:36 ******/
+/****** Object:  Table [dbo].[stockMaster]    Script Date: 08/07/2019 16:46:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -90,26 +78,37 @@ GO
 SET IDENTITY_INSERT [dbo].[putDetails] ON 
 
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (1, 1, N'item001', N'itemName001', N'BC1R1', N'3')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (47, 1, N'item001', N'itemName001', N'BC1R1', N'3')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (2, 1, N'item002', N'itemName002', N'BC1R2', N'1')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (48, 1, N'item002', N'itemName002', N'BC1R2', N'1')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (3, 1, N'item003', N'itemName003', N'BC2R3', N'2')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (49, 1, N'item003', N'itemName003', N'BC2R3', N'2')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (4, 2, N'item004', N'itemName004', N'BC2R4', N'3')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (50, 2, N'item004', N'itemName004', N'BC2R4', N'3')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (5, 2, N'item005', N'itemName005', N'BC2R5', N'1')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (51, 2, N'item005', N'itemName005', N'BC2R5', N'1')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (6, 3, N'item006', N'itemName006', N'BC2R6', N'2')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (52, 2, N'item006', N'itemName006', N'BC2R6', N'2')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (7, 4, N'item007', N'itemName007', N'BC2R7', N'2')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (53, 3, N'item007', N'itemName007', N'BC2R7', N'3')
 GO
-INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (8, 5, N'item008', N'itemName008', N'BC2R8', N'2')
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (54, 3, N'item008', N'itemName008', N'BC2R8', N'2')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (55, 3, N'item009', N'itemName009', N'BC2R9', N'1')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (56, 4, N'item010', N'itemName010', N'BC2R10', N'3')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (57, 4, N'item011', N'itemName011', N'BC2R11', N'2')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (58, 4, N'item012', N'itemName012', N'BC2R12', N'1')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (59, 5, N'item013', N'itemName013', N'BC2R13', N'3')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (60, 5, N'item014', N'itemName014', N'BC2R14', N'2')
+GO
+INSERT [dbo].[putDetails] ([putDetailsID], [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES (61, 5, N'item015', N'itemName015', N'BC2R15', N'1')
 GO
 SET IDENTITY_INSERT [dbo].[putDetails] OFF
-GO
-SET IDENTITY_INSERT [dbo].[putMaster] ON 
-
 GO
 INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (1, N'put001')
 GO
@@ -121,14 +120,21 @@ INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (4, N'put004')
 GO
 INSERT [dbo].[putMaster] ([putID], [putNo]) VALUES (5, N'put005')
 GO
-SET IDENTITY_INSERT [dbo].[putMaster] OFF
+SET IDENTITY_INSERT [dbo].[stockMaster] ON 
+
 GO
-/****** Object:  StoredProcedure [dbo].[sp_b_putMaster]    Script Date: 08/07/2019 16:06:36 ******/
+INSERT [dbo].[stockMaster] ([stockID], [putID], [rackQR], [itemCode], [itemName], [itemQty], [userName]) VALUES (1, 5, N'BC2R15', N'item015_itemName015_1', N'itemName015', N'1', N'user1')
+GO
+INSERT [dbo].[stockMaster] ([stockID], [putID], [rackQR], [itemCode], [itemName], [itemQty], [userName]) VALUES (2, 5, N'BC2R13', N'item013_itemName013_3', N'itemName013', N'3', N'user1')
+GO
+SET IDENTITY_INSERT [dbo].[stockMaster] OFF
+GO
+/****** Object:  StoredProcedure [dbo].[sp_b_putMaster]    Script Date: 08/07/2019 16:46:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create PROCEDURE [dbo].[sp_b_putMaster]
+CREATE PROCEDURE [dbo].[sp_b_putMaster]
 	
 	(
 	
@@ -142,6 +148,8 @@ create PROCEDURE [dbo].[sp_b_putMaster]
 	@itemQty varchar(20) = null,
 	@userName varchar(20) = null,
 	@currentDate datetime = null,
+	@logMode varchar(20) = null,
+
 	@qtype varchar(20),
 	@MSG varchar(100) = null OUTPUT,
 	@PageIndex int = null,
@@ -184,29 +192,47 @@ AS
 				
 				delete  from putDetails where putDetailsID = @putDetailsID
 				
-				insert logMaster (putNo, userName, logDate) values
-								 (@putNo, @userName, @currentDate)
+				insert logMaster (putNo, userName, logDate,logMode) values
+								 (@putNo, @userName, @currentDate,@logMode)
 				
 				set @MSG = 'Inserted'
 			commit tran
 		end	 
 		
-		else if @qtype = 'selLog'
+		else if @qtype = 'selectLog'
 		begin
 			select * from logMaster where userName = @userName
 		end
 		
-		else if @qtype  = 'resetPut'
+		else if @qtype  = 'resetData'
 		begin 
 			begin tran
 				delete from putMaster
-				insert into putMaster (putNo) values  ('put001')
-				insert into putMaster (putNo) values  ('put002')
-				insert into putMaster (putNo) values  ('put003')
-				insert into putMaster (putNo) values  ('put004')
-				insert into putMaster (putNo) values  ('put005')
+				insert into putMaster (putID,putNo) values  (1,'put001')
+				insert into putMaster (putID,putNo) values  (2,'put002')
+				insert into putMaster (putID,putNo) values  (3,'put003')
+				insert into putMaster (putID,putNo) values  (4,'put004')
+				insert into putMaster (putID,putNo) values  (5,'put005')
 				
 				delete from putDetails
+
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'3')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'1')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item003', N'itemName003', N'BC2R3', N'2')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item004', N'itemName004', N'BC2R4', N'3')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item005', N'itemName005', N'BC2R5', N'1')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item006', N'itemName006', N'BC2R6', N'2')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item007', N'itemName007', N'BC2R7', N'3')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item008', N'itemName008', N'BC2R8', N'2')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item009', N'itemName009', N'BC2R9', N'1')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 4, N'item010', N'itemName010', N'BC2R10', N'3')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 4, N'item011', N'itemName011', N'BC2R11', N'2')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 4, N'item012', N'itemName012', N'BC2R12', N'1')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item013', N'itemName013', N'BC2R13', N'3')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item014', N'itemName014', N'BC2R14', N'2')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item015', N'itemName015', N'BC2R15', N'1')
+
+				delete from logMaster
 				
 			commit tran
 		end

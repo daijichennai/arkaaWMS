@@ -27,8 +27,13 @@ export class LogPage {
 
   ionViewDidLoad() {
     this.storage.get('lsUserName').then((lsUserName) => {
+      console.log(lsUserName);
       this.getLogData(lsUserName)    
     });    
+  }
+  
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
   }
 
   getLogData(userName){

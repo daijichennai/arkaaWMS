@@ -86,7 +86,7 @@ export class AddputPage {
       let data: Observable<any>;
       let url = '';
       this.storage.get('lsUserName').then((lsUserName) => {
-         url = this.myFunc.domainURL + 'handlers/putMaster.ashx?mode=insPut&putID='+ this.putID + "&rackQR=" + this.scanRackQR + "&itemCode=" + this.scanBoxQR + "&itemName=" + this.itemName + "&itemQty=" + this.itemQty + "&userName=" + lsUserName + "&putDetailsID=" + this.intPutDetailsID + "&putNo=" + this.strPutNo;
+         url = this.myFunc.domainURL + 'handlers/putMaster.ashx?mode=insPut&putID='+ this.putID + "&rackQR=" + this.scanRackQR + "&itemCode=" + this.scanBoxQR + "&itemName=" + this.itemName + "&itemQty=" + this.itemQty + "&userName=" + lsUserName + "&putDetailsID=" + this.intPutDetailsID + "&putNo=" + this.strPutNo + "&logMode=put";
          let loader = this.loadingCtrl.create({
           content: 'Inserting Data'
         });

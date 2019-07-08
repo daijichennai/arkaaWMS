@@ -1,6 +1,11 @@
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title>Log</ion-title>
+        <ion-title>List of Log</ion-title>
+        <ion-buttons end>
+            <button text-right ion-button icon-only (click)="goToHome()">
+             <ion-icon ios="ios-home" md="md-home"></ion-icon>
+           </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -11,7 +16,8 @@
     <ion-card *ngFor="let l of logJson">
         <ion-item>
             <h2><span><b>Put No  : </b></span>{{l.putNo}} </h2>
-            <h2><span><b>Date : </b></span>{{l.logDate}} </h2>
+            <h2><span><b>Date &nbsp;&nbsp;: </b></span>{{l.logDate}} </h2>
+            <h2><span><b>Mode &nbsp;: </b></span>{{l.logMode}} </h2>
         </ion-item>
     </ion-card>
 </ion-content>
