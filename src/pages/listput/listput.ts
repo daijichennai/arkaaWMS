@@ -43,14 +43,12 @@ export class ListputPage {
     loader.present().then(() => {
       data.subscribe(result => {
         console.log(result);
-        //this.isClaimAvailable = false;
         this.putJson = result;
         loader.dismiss();
       }, error => {
-          //this.isClaimAvailable = true;
         loader.dismiss();
         console.log(error);
-        //alert('Error in List Claim');
+        //alert('Error');
       });
     });
   }
