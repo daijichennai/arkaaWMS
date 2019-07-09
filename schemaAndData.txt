@@ -99,6 +99,7 @@ GO
 CREATE TABLE [dbo].[stockMaster](
 	[stockID] [int] IDENTITY(1,1) NOT NULL,
 	[putID] [int] NULL,
+	[pickID] [int] NULL,
 	[rackQR] [varchar](50) NULL,
 	[itemCode] [varchar](50) NULL,
 	[itemName] [varchar](50) NULL,
@@ -341,13 +342,19 @@ AS
 		begin 
 			begin tran
 				delete from putMaster
+				delete from putDetails
+				delete from pickMaster
+				delete from pickDetails
+				delete from stockMaster				
+				delete from logMaster
+
 				insert into putMaster (putID,putNo) values  (1,'put001')
 				insert into putMaster (putID,putNo) values  (2,'put002')
 				insert into putMaster (putID,putNo) values  (3,'put003')
 				insert into putMaster (putID,putNo) values  (4,'put004')
 				insert into putMaster (putID,putNo) values  (5,'put005')
 				
-				delete from putDetails
+				
 
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'3')
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'1')
@@ -365,7 +372,7 @@ AS
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item014', N'itemName014', N'BC2R14', N'2')
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item015', N'itemName015', N'BC2R15', N'1')
 
-				delete from pickMaster
+				
 
 				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (1, N'pick001')
 				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (2, N'pick002')
@@ -373,7 +380,7 @@ AS
 				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (4, N'pick004')
 				INSERT [dbo].[pickMaster] ([pickID], [pickNo]) VALUES (5, N'pick005')
 
-				delete from putDetails
+				
 
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'3')
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'1')
@@ -391,10 +398,6 @@ AS
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item014', N'itemName014', N'BC2R14', N'2')
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 5, N'item015', N'itemName015', N'BC2R15', N'1')
 
-				delete from stockMaster
-				
-				delete from logMaster
-
 				
 			commit tran
 		end
@@ -402,4 +405,3 @@ AS
 			 
 
 	end
-GO
