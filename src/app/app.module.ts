@@ -8,6 +8,8 @@ import { SQLite } from '@ionic-native/sqlite';
 import { MyApp } from './app.component';
 import { CommfuncProvider } from '../providers/commfunc/commfunc';
 import { HttpClientModule } from '@angular/common/http';
+import { Keyboard } from '@ionic-native/keyboard';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     MyApp,
     SQLite,
+    Keyboard,
    {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommfuncProvider
   ]

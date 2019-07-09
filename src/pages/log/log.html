@@ -15,9 +15,34 @@
     </div>
     <ion-card *ngFor="let l of logJson">
         <ion-item>
-            <h2><span><b>Put No  : </b></span>{{l.putNo}} </h2>
-            <h2><span><b>Date &nbsp;&nbsp;&nbsp;: </b></span>{{l.logDate}} </h2>
-            <h2><span><b>Mode &nbsp;: </b></span>{{l.logMode}} </h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <h2><b>No </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{l.putNo}} </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2><b>Date</b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>
+                        {{l.logDate}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2><b>Mode</b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>
+                        {{l.logMode}}
+                    </td>
+                </tr>
+            </table>
         </ion-item>
     </ion-card>
 </ion-content>

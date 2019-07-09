@@ -11,13 +11,42 @@
 
 <ion-content>
     <ion-card *ngFor="let p of pickDetailsJson">
-        <ion-item (click)="goToAddPickDetails(p.pickDetailsID,p.pickNo)">
-            <h2><span><b>Item Code : </b></span>{{p.itemCode}} </h2>
-            <h2><span><b>Item Name : </b></span>{{p.itemName}} </h2>
-            <h2><span><b>Item Quantity : </b></span>{{p.itemQty}} </h2>
-            <h2><span><b>Suggested Location : </b></span>{{p.suggestedLocation}} </h2>
-            <br>
-            <button ion-button full>Put</button>
+        <ion-item>
+            <table>
+                <tr>
+                    <td>
+                        <h2><b>Item Code </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{p.itemCode}} </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h2><b>Item Name </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{p.itemName}} </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h2><b>Item Qty </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{p.itemQty}} </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h2><b>Suggested Location </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{p.suggestedLocation}} </td>
+                </tr>
+            </table>
+
+            <button ion-button full (click)="goToAddPickDetails(p.pickDetailsID,p.pickNo)">Pick</button>
         </ion-item>
     </ion-card>
 </ion-content>

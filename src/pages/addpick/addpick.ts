@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { CommfuncProvider } from '../../providers/commfunc/commfunc';
@@ -21,6 +21,7 @@ export class AddpickPage {
   itemQty: string;
   pickID: string;
   strPickNo: string;
+  @ViewChild('inputScanBox') myScanBox;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,6 +41,12 @@ export class AddpickPage {
   }
   ionViewDidLoad() {
     this.getPutDetailsyID(this.intPickDetailsID);
+  }
+
+   ionViewDidEnter() {
+    setTimeout(() => {
+      this.myScanBox.setFocus();
+    }, 250);
   }
 
   getPutDetailsyID(pickDetailsID) {
@@ -82,7 +89,7 @@ export class AddpickPage {
 
   submitFn() {
     if (this.hfScanBoxQR === this.scanBoxQR && this.hfScanRackQR === this.scanRackQR) {
-      alert("submit");
+      //alert("submit");
       let data: Observable<any>;
       let url = '';
       this.storage.get('lsUserName').then((lsUserName) => {
@@ -96,7 +103,11 @@ export class AddpickPage {
             //alert("success");
             if (result === null) {
               //this.navCtrl.pop();
-              this.navCtrl.setRoot("HomePage");
+              //this.navCtrl.setRoot("HomePage");
+              this.navCtrl.push("PickdetailsPage", {
+                "pickID": this.pickID,
+                "pickNo": this.strPickNo
+              });
             }
             console.log(result);
             loader.dismiss();

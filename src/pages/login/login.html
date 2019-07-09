@@ -4,9 +4,13 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
-    <ion-card padding>
+<ion-content>
+    <ion-row class="logo-row">
+        <ion-col text-center>
+            <img src="../../assets/imgs/logo.png" style="width: 50%;" />
+        </ion-col>
+    </ion-row>
+    <ion-card>
         <form [formGroup]="authForm" (ngSubmit)="chkLogin()">
             <ion-item>
                 <ion-label floating>Username</ion-label>
@@ -17,7 +21,7 @@
             </div>
             <div class="error-box" *ngIf="authForm.controls['chkUserName'].hasError('minlength') &&
           authForm.controls['chkUserName'].touched">
-                * User Name Should not be less than 8 characters</div>
+                * User Name Should not be less than 9 characters</div>
 
             <ion-item>
                 <ion-label floating>Password</ion-label>
@@ -36,7 +40,10 @@
             <div class="error-box" *ngIf="authForm.controls['chkUserPassword'].hasError('minlength') &&
           authForm.controls['chkUserPassword'].touched">
                 * Password Should not be less than 8 characters</div>
-            <button type="submit" ion-button full [disabled]="!authForm.valid">Login</button>
+            <div padding>
+                <button type="submit" ion-button full [disabled]="!authForm.valid">Login</button>
+            </div>
+
         </form>
 
     </ion-card>

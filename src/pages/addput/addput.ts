@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { CommfuncProvider } from '../../providers/commfunc/commfunc';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
+import { Keyboard } from '@ionic-native/keyboard';
+
 @IonicPage()
 @Component({
   selector: 'page-addput',
   templateUrl: 'addput.html',
 })
 export class AddputPage {
+  authForm: FormGroup;
   public intPutDetailsID;
   public putDetailsJson:any =[];
   public hfScanBoxQR:string;
@@ -21,6 +25,8 @@ export class AddputPage {
   itemQty:string;
   putID:string;
   strPutNo :string;
+  @ViewChild('inputScanBox') myScanBox;
+  @ViewChild('inputScanRack') myScanRack;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,17 +35,41 @@ export class AddputPage {
     private myFunc: CommfuncProvider,
     public alertCtrl: AlertController,
     private storage: Storage,
+    public fb: FormBuilder,
+    private keyboard: Keyboard
 )
  {
     this.intPutDetailsID = this.navParams.get("putDetailsID");
     this.strPutNo = this.navParams.get("putNo");
     console.log(this.intPutDetailsID);
+
+    this.authForm = fb.group({
+      //'chkScanBoxQR': [null, Validators.compose([Validators.required])],
+      'chkScanRackQR': ['', Validators.compose([Validators.required])]
+    });
+
+    
+
 }
+
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.myScanBox.setFocus();
+    }, 150);
+  }
   goToHome() {
     this.navCtrl.setRoot('HomePage');
   }
   ionViewDidLoad() {
     this.getPutDetailsyID(this.intPutDetailsID);
+    
+  }
+
+  lockKeyboard(){
+    setTimeout(() => {
+      this.myScanRack.setFocus();
+    }, 150);
+    this.keyboard.hide();
   }
 
   getPutDetailsyID(putDetailsID) {
@@ -83,7 +113,7 @@ export class AddputPage {
 
   submitFn(){
     if(this.hfScanBoxQR === this.scanBoxQR && this.hfScanRackQR === this.scanRackQR){
-      alert("submit");
+      //alert("submit");
       let data: Observable<any>;
       let url = '';
       this.storage.get('lsUserName').then((lsUserName) => {
@@ -97,7 +127,12 @@ export class AddputPage {
             //alert("success");
             if(result===null){
               //this.navCtrl.pop();
-              this.navCtrl.setRoot("HomePage");
+              //this.navCtrl.setRoot("HomePage");
+              //this.navCtrl.pop();
+              this.navCtrl.push("PutdetailsPage",{
+                "putID": this.putID,
+                "putNo": this.strPutNo
+              });
             }
 
             console.log(result);         
@@ -119,13 +154,12 @@ export class AddputPage {
 
   alertMsgFn(msg){
     let altsuccess = this.alertCtrl.create({
-      title: 'Success',
+      title: 'Failure 😞',
       message: msg,
       buttons: [
         {
           text: 'OK',
           handler: () => {
-            //this.navCtrl.push(CreditListPage);
           }
         }
       ]

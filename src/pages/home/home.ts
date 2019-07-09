@@ -45,7 +45,7 @@ export class HomePage {
     let data: Observable<any>;
     let url = this.myFunc.domainURL + "handlers/putMaster.ashx?mode=reset";
     let loader = this.loadingCtrl.create({
-      content: 'Resetting Data'
+      content: 'Resetting Data and logging out...'
     });
     data = this.http.get(url);
     loader.present().then(() => {

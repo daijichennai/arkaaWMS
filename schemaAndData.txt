@@ -348,18 +348,18 @@ AS
 				delete from stockMaster				
 				delete from logMaster
 
-				insert into putMaster (putID,putNo) values  (1,'put001')
-				insert into putMaster (putID,putNo) values  (2,'put002')
-				insert into putMaster (putID,putNo) values  (3,'put003')
-				insert into putMaster (putID,putNo) values  (4,'put004')
-				insert into putMaster (putID,putNo) values  (5,'put005')
+				insert into putMaster (putID,putNo) values  (1,'001')
+				insert into putMaster (putID,putNo) values  (2,'002')
+				insert into putMaster (putID,putNo) values  (3,'003')
+				insert into putMaster (putID,putNo) values  (4,'004')
+				insert into putMaster (putID,putNo) values  (5,'005')
 				
 				
 
-				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'3')
-				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'1')
-				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item003', N'itemName003', N'BC2R3', N'2')
-				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item004', N'itemName004', N'BC2R4', N'3')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'2')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'4')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item003', N'itemName003', N'BC2R3', N'1')
+				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item004', N'itemName004', N'BC2R4', N'2')
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item005', N'itemName005', N'BC2R5', N'1')
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item006', N'itemName006', N'BC2R6', N'2')
 				INSERT [dbo].[putDetails] (  [putID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item007', N'itemName007', N'BC2R7', N'3')
@@ -382,10 +382,10 @@ AS
 
 				
 
-				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'3')
-				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'1')
-				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item003', N'itemName003', N'BC2R3', N'2')
-				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item004', N'itemName004', N'BC2R4', N'3')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item001', N'itemName001', N'BC1R1', N'2')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item002', N'itemName002', N'BC1R2', N'4')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 1, N'item003', N'itemName003', N'BC2R3', N'1')
+				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item004', N'itemName004', N'BC2R4', N'2')
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item005', N'itemName005', N'BC2R5', N'1')
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 2, N'item006', N'itemName006', N'BC2R6', N'2')
 				INSERT [dbo].[pickDetails] ( [pickID], [itemCode], [itemName], [suggestedLocation], [itemQty]) VALUES ( 3, N'item007', N'itemName007', N'BC2R7', N'3')

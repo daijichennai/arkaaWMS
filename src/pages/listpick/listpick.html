@@ -8,13 +8,31 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content>
     <ion-card *ngFor="let p of pickJson">
         <ion-item (click)="goToPickDetails(p.pickID,p.pickNo)">
-            <h2><span><b>Put No : </b></span> {{p.pickNo}}</h2>
-            <h2><span><b>Item Code : </b></span>
-                <div *ngFor="let item of p.items">{{item.itemName}}</div>
-            </h2>
+            <table>
+                <tr>
+                    <td>
+                        <h2><b>Pick No </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{p.pickNo}} </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2><b>Item Code </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>
+                        <ul class="ulClass">
+                            <li class="liClass" *ngFor="let item of p.items">
+                                {{item.itemCode}} /&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
         </ion-item>
     </ion-card>
 </ion-content>

@@ -3,8 +3,8 @@
         <ion-title>List Put</ion-title>
         <ion-buttons end>
             <button text-right ion-button icon-only (click)="goToHome()">
-            <ion-icon ios="ios-home" md="md-home"></ion-icon>
-          </button>
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+      </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -12,10 +12,28 @@
 <ion-content>
     <ion-card *ngFor="let p of putJson">
         <ion-item (click)="goToPutDetails(p.putID,p.putNo)">
-            <h2><span><b>Put No : </b></span> {{p.putNo}}</h2>
-            <h2><span><b>Item Code : </b></span>
-                <div *ngFor="let item of p.items">{{item.itemName}}</div>
-            </h2>
+            <table>
+                <tr>
+                    <td>
+                        <h2><b>Put No </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>{{p.putNo}} </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2><b>Item Code </b></h2>
+                    </td>
+                    <td> &nbsp;:&nbsp;</td>
+                    <td>
+                        <ul class="ulClass">
+                            <li class="liClass" *ngFor="let item of p.items">
+                                {{item.itemCode}} /&nbsp;
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
         </ion-item>
     </ion-card>
 </ion-content>

@@ -24,14 +24,28 @@
 
         <ion-item>
             <ion-label floating>Scan Box QR</ion-label>
-            <ion-input type="text" [(ngModel)]="scanBoxQR" value=""></ion-input>
+            <!-- <ion-input type="text" #inputScanBox (input)="lockKeyboard()" [(ngModel)]="scanBoxQR" [formControl]="authForm.controls['chkScanBoxQR']" [ngClass]="{'error-border':!authForm.controls['chkScanBoxQR'].valid}" value=""></ion-input> -->
+            <ion-input type="text" #inputScanBox (input)="lockKeyboard()" [(ngModel)]="scanBoxQR" value=""></ion-input>
         </ion-item>
+        <form [formGroup]="authForm" (ngSubmit)="submitFn()">
 
-        <ion-item>
-            <ion-label floating>Scan Rack QR</ion-label>
-            <ion-input type="text" [(ngModel)]="scanRackQR" value=""></ion-input>
-        </ion-item>
+            <!-- <div class="error-box" *ngIf="authForm.controls['chkScanBoxQR'].hasError('required') &&
+              authForm.controls['chkScanBoxQR'].touched">
+                &nbsp;&nbsp;* Scan Box QR
+            </div> -->
 
-        <button ion-button full (click)="submitFn()">Submit</button>
+            <ion-item>
+                <ion-label floating>Scan Rack QR</ion-label>
+                <ion-input type="text" #inputScanRack [(ngModel)]="scanRackQR" [formControl]="authForm.controls['chkScanRackQR']" [ngClass]="{'error-border':!authForm.controls['chkScanRackQR'].valid}" value=""></ion-input>
+            </ion-item>
+            <br />
+            <div class="error-box" *ngIf="authForm.controls['chkScanRackQR'].hasError('required') &&
+              authForm.controls['chkScanRackQR'].touched">
+                &nbsp;&nbsp;* Scan Rack QR
+            </div>
+            <div padding>
+                <button ion-button full [disabled]="!authForm.valid">Submit</button>
+            </div>
+        </form>
     </ion-card>
 </ion-content>

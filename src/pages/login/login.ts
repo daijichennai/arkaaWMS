@@ -34,7 +34,7 @@ export class LoginPage {
        'chkUserName': [null, Validators.compose([Validators.required])],
       // 'chkUserPassword': [null, Validators.compose([Validators.required])]
       //'chkUserName': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      'chkUserPassword': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+      'chkUserPassword': ['', Validators.compose([Validators.required, Validators.minLength(9)])]
     });
   }
 

@@ -1,63 +1,39 @@
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title text-center>Arkka WMS</ion-title>
+        <ion-title text-center>Arka WMS</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        <ion-row>
-            <ion-col col-6>
-                <ion-card (click)="goToPustList()">
-                    <ion-card-content>
-                        <img src="../../assets/imgs/putList.png" />
-                        <p style="font-size:16px;" text-center>
-                            <b class="colorRed">List Put</b>
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
 
-            <ion-col col-6>
-                <ion-card (click)="goToPick()">
-                    <ion-card-content>
-                        <img src="../../assets/imgs/pickList.png" />
-                        <p style="font-size:16px;" text-center>
-                            <b class="colorRed">
-                            List Pick
-                          </b>
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-
-
-            <ion-col col-6>
-                <ion-card (click)="goToLog()">
-                    <ion-card-content>
-                        <img src="../../assets/imgs/log.png" />
-                        <p style="font-size:16px;" text-center>
-                            <b class="colorRed">
-                            List Log
-                          </b>
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-
-            <ion-col col-6>
-                <ion-card (click)="logOut()">
-                    <ion-card-content>
-                        <img src="../../assets/imgs/logout.png" />
-                        <p style="font-size:16px;" text-center>
-                            <b class="colorRed">
-                            Log Out
-                          </b>
-                        </p>
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-
-        </ion-row>
-    </ion-grid>
+    <div>
+        <ion-grid>
+            <ion-row wrap>
+                <ion-col col-6 (click)="goToPustList()">
+                    <ion-item class="myCard">
+                        <img class="myImage" src="../../assets/imgs/putList.png" />
+                        <h5 text-center><b>PUT LIST</b></h5>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6 (click)="goToPick()">
+                    <ion-item class="myCard">
+                        <img class="myImage" src="../../assets/imgs/pickList.png" />
+                        <h5 text-center><b>PICK LIST</b></h5>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6 (click)="goToLog()">
+                    <ion-item class="myCard">
+                        <img class="myImage" src="../../assets/imgs/log.png" />
+                        <h5 text-center><b>USER LOG</b></h5>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6 (click)="logOut()">
+                    <ion-item class="myCard">
+                        <img class="myImage" src="../../assets/imgs/logout.png" />
+                        <h5 text-center><b>LOG OUT</b></h5>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>
